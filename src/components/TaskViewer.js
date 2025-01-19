@@ -78,29 +78,44 @@ const TaskViewer = ({ token }) => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Tasks Assigned to You</h2>
+    <div className="container" style={{ marginTop: '80px', paddingBottom: '2rem' }}>
+      <h2 className="mb-4">Tasks Assigned to You</h2>
       {loading ? (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
+        <div className="text-center">
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
       ) : (
         <ListGroup>
           {tasks.length > 0 ? (
             tasks.map(task => (
-              <ListGroup.Item key={task._id}>
-                <strong>Task:</strong> {task.task_msg}<br />
-                <strong>Assigned By:</strong> {task.assigned_by_name}<br />
-                <strong>Date:</strong> {new Date(task.task_date).toLocaleString()}<br />
-                <strong>Time:</strong> {formatTime(task.task_time)}<br />
-                {!task.is_completed && (
-                  <Button variant="success" onClick={() => handleCompleteTask(task._id, 1)}>
-                    Mark as Complete
+              <ListGroup.Item 
+                key={task._id}
+                className="mb-3"
+              >
+                <div className="mb-2">
+                  <strong>Task:</strong> {task.task_msg}
+                </div>
+                <div className="mb-2">
+                  <strong>Assigned By:</strong> {task.assigned_by_name}
+                </div>
+                <div className="mb-2">
+                  <strong>Date:</strong> {new Date(task.task_date).toLocaleString()}
+                </div>
+                <div className="mb-3">
+                  <strong>Time:</strong> {formatTime(task.task_time)}
+                </div>
+                <div className="d-flex gap-2">
+                  {!task.is_completed && (
+                    <Button variant="success" onClick={() => handleCompleteTask(task._id, 1)}>
+                      Mark as Complete
+                    </Button>
+                  )}
+                  <Button variant="danger" onClick={() => handleDeleteTask(task._id)}>
+                    Delete
                   </Button>
-                )}
-                <Button variant="danger" onClick={() => handleDeleteTask(task._id)}>
-                  Delete
-                </Button>
+                </div>
               </ListGroup.Item>
             ))
           ) : (

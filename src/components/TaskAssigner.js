@@ -75,14 +75,14 @@ const TaskAssigner = ({ token }) => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container" style={{ marginTop: '80px', paddingBottom: '2rem' }}>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <Card>
             <Card.Body>
-              <Card.Title>Assign Task</Card.Title>
+              <Card.Title className="mb-4">Assign Task</Card.Title>
               <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formAssignedUser">
+                <Form.Group className="mb-3" controlId="formAssignedUser">
                   <Form.Label>Assigned User</Form.Label>
                   <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -97,15 +97,22 @@ const TaskAssigner = ({ token }) => {
                     </Dropdown.Menu>
                   </Dropdown>
                 </Form.Group>
-                <Form.Group controlId="formTaskDate">
+                <Form.Group className="mb-3" controlId="formTaskDate">
                   <Form.Label>Task Date</Form.Label>
-                  <DatePicker selected={formData.task_date} onChange={handleDateChange} dateFormat="yyyy-MM-dd" />
+                  <div>
+                    <DatePicker
+                      selected={formData.task_date}
+                      onChange={handleDateChange}
+                      dateFormat="yyyy-MM-dd"
+                      className="form-control"
+                    />
+                  </div>
                 </Form.Group>
-                <Form.Group controlId="formTaskTime">
+                <Form.Group className="mb-3" controlId="formTaskTime">
                   <Form.Label>Task Time</Form.Label>
                   <Form.Control type="time" name="task_time" onChange={handleTimeChange} required />
                 </Form.Group>
-                <Form.Group controlId="formTaskMsg">
+                <Form.Group className="mb-4" controlId="formTaskMsg">
                   <Form.Label>Task Description</Form.Label>
                   <Form.Control as="textarea" name="task_msg" onChange={handleChange} required />
                 </Form.Group>
