@@ -118,7 +118,7 @@ const Login = ({ setToken }) => {
                 <div className="text-center">
                   <p className="mb-0">
                     Don't have an account?{' '}
-                    <a href="/signup" className="text-primary text-decoration-none">
+                    <a href="/register" className="text-primary text-decoration-none">
                       Sign up
                     </a>
                   </p>
