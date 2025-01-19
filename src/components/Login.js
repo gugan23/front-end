@@ -114,18 +114,6 @@ const Login = ({ setToken }) => {
                     'Sign In'
                   )}
                 </Button>
-
-                <div className="text-center">
-                  <p className="mb-0">
-                    Don't have an account?{' '}
-                    <a href="/register" className="text-primary text-decoration-none">
-                      Sign up
-                    </a>
-                  </p>
-                  <a href="/forgot-password" className="text-primary text-decoration-none">
-                    Forgot password?
-                  </a>
-                </div>
               </Form>
             </Card.Body>
           </Card>
